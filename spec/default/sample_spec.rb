@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+describe command('timedatectl status | grep "Time zone"') do
+  its(:stdout) { should match /Asia\/Tokyo/}
+end
+
 describe package('nginx') do
   it { should be_installed }
 end
@@ -16,6 +20,11 @@ end
 end
 
 describe service('php-fpm') do
+  it { should be_enabled }
+  it { should be_running }
+end
+
+describe service('chronyd') do
   it { should be_enabled }
   it { should be_running }
 end
