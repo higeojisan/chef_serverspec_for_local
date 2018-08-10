@@ -1,5 +1,4 @@
 .vagrant/
-.rspec
 ca.iret.goskope.com.pem
 caadmin.netskope.com.pem
 Gemfile.lock
