@@ -4,6 +4,10 @@ describe command('timedatectl status | grep "Time zone"') do
   its(:stdout) { should match /Asia\/Tokyo/}
 end
 
+describe selinux do
+  it { should be_disabled }
+end
+
 describe package('nginx') do
   it { should be_installed }
 end

@@ -1,6 +1,6 @@
 template "/etc/yum.repos.d/nginx.repo" do
   owner "root"
-  owner "root"
+  group "root"
   mode "0644"
 end
 
