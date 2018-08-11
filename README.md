@@ -1,5 +1,5 @@
 # 概要
-Vagrnt + chef-soloでローカル(Mac)にCentOS7 + Nginx + PHP-FPM + Redisの開発環境を構築するためのリポジトリ
+Vagrant + chef-soloでローカル(Mac)にCentOS7 + Nginx + PHP-FPM + Redisの開発環境を構築するためのリポジトリ
 
 ## 前提
 ローカルのMacに以下が既にインストールされていること
