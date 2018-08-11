@@ -1,5 +1,5 @@
 # 各種パッケージのインストール
-%w(wget git vim).each do |pkg|
+%w(wget git vim unzip).each do |pkg|
   package pkg do
     action :install
   end

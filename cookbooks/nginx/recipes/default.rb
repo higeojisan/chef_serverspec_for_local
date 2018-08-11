@@ -13,3 +13,12 @@ service "nginx" do
   action [:enable, :start]
   supports :start => true, :status => true, :restart => true, :reload => true
 end
+
+template "/etc/nginx/conf.d/#{node['nginx']['server_name']}.conf" do
+  source "chef_dev_local.conf.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  verify 'nginx -t'
+  notifies :reload, 'service[nginx]'
+end

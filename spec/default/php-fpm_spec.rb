@@ -6,7 +6,20 @@ require 'spec_helper'
   end
 end
 
+describe package('php-pecl-zip') do
+  it { should be_installed }
+end
+
+describe command('which composer') do
+  let(:disable_sudo) { true }
+  its(:exit_status) { should eq 0 }
+end
+
 describe service('php-fpm') do
   it { should be_enabled }
   it { should be_running }
+end
+
+describe port(9000) do
+  it { should be_listening }
 end

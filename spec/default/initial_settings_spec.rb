@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-%w(wget git).each do |pkg|
+%w(wget git unzip).each do |pkg|
   describe package(pkg) do
     it { should be_installed }
   end
