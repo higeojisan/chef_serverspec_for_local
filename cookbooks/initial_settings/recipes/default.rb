@@ -1,3 +1,10 @@
+# 各種パッケージのインストール
+%w(wget git vim).each do |pkg|
+  package pkg do
+    action :install
+  end
+end
+
 # タイムゾーンの設定
 execute 'timedatectl set-timezone' do
   user 'root'

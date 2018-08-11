@@ -1,5 +1,15 @@
 require 'spec_helper'
 
+%w(wget git).each do |pkg|
+  describe package(pkg) do
+    it { should be_installed }
+  end
+end
+
+describe command('which vim') do
+  its(:exit_status) { should eq 0 }
+end
+
 describe command('timedatectl status | grep "Time zone"') do
   its(:stdout) { should match /Asia\/Tokyo/}
 end
@@ -35,4 +45,9 @@ end
 
 describe port(80) do
   it { should be_listening }
+end
+
+describe command('which redis-cli') do
+  let(:disable_sudo) { true }
+  its(:exit_status) { should eq 0 }
 end

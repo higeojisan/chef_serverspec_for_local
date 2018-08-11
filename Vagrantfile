@@ -9,6 +9,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "chef_solo" do |chef|
     chef.install = true
-    chef.run_list = ["nginx", "php-fpm", "initial_settings"]
+    chef.run_list = ["initial_settings","nginx", "php-fpm", "redis"]
   end
 end
