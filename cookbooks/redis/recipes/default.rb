@@ -13,3 +13,15 @@ script 'install redis-cli' do
     EOH
   not_if { File.exists?("/usr/local/bin/redis-cli")}
 end
+
+# redisのインストール
+package 'redis' do
+  version "3.2.12"
+  options "--enablerepo=epel"
+  action :install
+end
+
+service 'redis' do
+  action [:enable, :start]
+  supports :start => true, :status => true, :restart => true, :reload => true
+end
