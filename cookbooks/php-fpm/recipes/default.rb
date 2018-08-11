@@ -8,7 +8,7 @@ execute 'install remi-release-7' do
   not_if "rpm -q remi-release"
 end
 
-%w(php php-fpm).each do |pkg|
+%w(php php-fpm php-mbstring php-pdo php-opcache).each do |pkg|
   package pkg do
     action :install
     options "--enablerepo=epel,remi,remi-php71"
