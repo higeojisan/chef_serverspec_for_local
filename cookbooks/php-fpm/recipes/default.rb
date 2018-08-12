@@ -37,3 +37,10 @@ execute 'modify /etc/php-fpm.d/www.conf' do
   not_if 'cat /etc/php-fpm.d/www.conf | grep "user = nginx"'
   notifies :restart, 'service[php-fpm]'
 end
+
+execute 'remove X-Powered-By' do
+  user "root"
+  command "sed -i -e 's/expose_php = On/expose_php = Off/g' /etc/php.ini"
+  not_if 'cat /etc/php.ini | grep "expose_php = Off"'
+  notifies :restart, 'service[php-fpm]'
+end

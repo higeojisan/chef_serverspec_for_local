@@ -23,3 +23,15 @@ end
 describe port(9000) do
   it { should be_listening }
 end
+
+describe command('cat /etc/php.ini | grep "expose_php = Off"') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('cat /etc/php-fpm.d/www.conf | grep "user = nginx"') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('cat /etc/php-fpm.d/www.conf | grep "group = nginx"') do
+  its(:exit_status) { should eq 0 }
+end
