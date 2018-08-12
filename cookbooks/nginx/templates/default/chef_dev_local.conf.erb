@@ -5,17 +5,22 @@ server {
     access_log  /var/log/nginx/<%= node['nginx']['server_name'] %>.access.log  main;
     error_log  /var/log/nginx/<%= node['nginx']['server_name'] %>.error.log  warn;
 
-    root /var/www/<%= node['nginx']['server_name'] %>/backend/public;
-    index index.php;
-
     location / {
+        root /var/www/<%= node['nginx']['server_name'] %>/frontend/dist;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    location ^~ /api {
+        root /var/www/<%= node['nginx']['server_name'] %>/backend/public;
+        index index.php;
         try_files $uri $uri/ /index.php?$query_string;
     }
 
     location ~ \.php$ {
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  $document_root/$fastcgi_script_name;
+        fastcgi_param  SCRIPT_FILENAME  var/www/<%= node['nginx']['server_name'] %>/backend/public/$fastcgi_script_name;
         include        fastcgi_params;
     }
 }
