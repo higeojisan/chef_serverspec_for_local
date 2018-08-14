@@ -38,9 +38,18 @@ execute 'modify /etc/php-fpm.d/www.conf' do
   notifies :restart, 'service[php-fpm]'
 end
 
-execute 'remove X-Powered-By' do
-  user "root"
-  command "sed -i -e 's/expose_php = On/expose_php = Off/g' /etc/php.ini"
-  not_if 'cat /etc/php.ini | grep "expose_php = Off"'
+#execute 'remove X-Powered-By' do
+#  user "root"
+#  command "sed -i -e 's/expose_php = On/expose_php = Off/g' /etc/php.ini"
+#  not_if 'cat /etc/php.ini | grep "expose_php = Off"'
+#  notifies :restart, 'service[php-fpm]'
+#end
+
+# php.iniの基本的な設定(文字コード、タイムゾーン、X-Powered-Byの削除)
+template '/etc/php.ini' do
+  source 'php.ini.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
   notifies :restart, 'service[php-fpm]'
 end

@@ -28,6 +28,18 @@ describe command('cat /etc/php.ini | grep "expose_php = Off"') do
   its(:exit_status) { should eq 0 }
 end
 
+describe command('cat /etc/php.ini | grep "default_charset = \"UTF-8\""') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('cat /etc/php.ini | grep -E \'^date\.timezone = "Asia/Tokyo"\'') do
+  its(:exit_status) { should eq 0 }
+end
+
+describe command('cat /etc/php.ini | grep -E \'^mbstring\.language = Japanese\'') do
+  its(:exit_status) { should eq 0 }
+end
+
 describe command('cat /etc/php-fpm.d/www.conf | grep "user = nginx"') do
   its(:exit_status) { should eq 0 }
 end
