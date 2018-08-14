@@ -1,6 +1,7 @@
 .vagrant/
 ca.iret.goskope.com.pem
 caadmin.netskope.com.pem
-Gemfile.lock
+packer_serverspec/vendor/bundle
 vendor/bundle
 .bundle
+.envrc

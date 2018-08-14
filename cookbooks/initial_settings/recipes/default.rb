@@ -1,5 +1,5 @@
 # 各種パッケージのインストール
-%w(wget git vim unzip).each do |pkg|
+%w(wget git vim unzip gcc).each do |pkg|
   package pkg do
     action :install
   end
@@ -12,6 +12,11 @@ execute 'timedatectl set-timezone' do
 end
 
 # SElinuxの無効化
+execute 'setenforce 0' do
+  user 'root'
+  command 'setenforce 0'
+end
+
 template '/etc/selinux/config' do
   source '/etc/selinux/config.erb'
   user 'root'

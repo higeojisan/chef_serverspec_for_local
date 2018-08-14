@@ -1,0 +1,45 @@
+{
+  "variables": {
+    "region":     "{{env `AWS_REGION`}}",
+    "source_ami": "ami-8e8847f1",
+    "ami_name_prefix": "base-ami",
+    "script_dir": "scripts"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "{{user `aws_region`}}",
+      "source_ami":    "{{user `source_ami`}}",
+      "instance_type": "t2.micro",
+      "ssh_username": "centos",
+      "ami_name": "{{user `ami_name_prefix`}}_{{timestamp}}",
+      "tags": {
+          "Name": "centos7-base-ami",
+          "version": "{{timestamp}}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo yum update -y"
+      ]
+    },
+    {
+      "type": "chef-solo",
+      "cookbook_paths": ["cookbooks"],
+      "run_list": ["recipe[initial_settings]", "recipe[nginx]", "recipe[nodejs]", "recipe[php-fpm]", "recipe[redis]"]
+    },
+    {
+      "type": "file",
+      "source": "packer_serverspec",
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "execute_command": "sh {{ .Path }}",
+      "script": "{{user `script_dir`}}/packer_serverspec.sh"
+    }
+  ]
+}
