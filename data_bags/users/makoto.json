@@ -1,0 +1,10 @@
+{
+  "id": "makoto",
+  "password": {
+    "encrypted_data": "zLL4qu2ZhGhixLVnfEOzo+6VAsnOOMX7Kr0NE1OtOEx7OTGhW+fg5PEKcWT4\n9FstHv5s6co=\n",
+    "iv": "G8PzFT2sFHOiHP9w\n",
+    "auth_tag": "4jgipif9vTAfeQiTGNkUCQ==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  }
+}

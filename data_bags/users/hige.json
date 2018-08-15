@@ -1,0 +1,10 @@
+{
+  "id": "hige",
+  "password": {
+    "encrypted_data": "fvb531DrUwyqh14Lf1UAOAhTble7YIoxImtPXR6OoLp0XKc3y4769/kj7K5K\nqNsVubBSYWM=\n",
+    "iv": "8WIt8dn8kJj5wTFW\n",
+    "auth_tag": "pWQDQqVnXBGp420axcSnSA==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  }
+}

@@ -24,6 +24,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    ruby-shadow (2.5.0)
     serverspec (2.41.3)
       multi_json
       rspec (~> 3.0)
@@ -41,6 +42,7 @@ PLATFORMS
 
 DEPENDENCIES
   rake
+  ruby-shadow
   serverspec
 
 BUNDLED WITH
