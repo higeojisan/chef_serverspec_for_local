@@ -1,7 +1,7 @@
 # 概要
 以下の2つの環境を構築するためのリポジトリ
 1. Vagrant + chef-soloでローカル(Mac)にCentOS7 + Nginx + PHP-FPM + Redisのローカル開発環境
-2. 
+2. Packer + chef-soloでプロビジョニングされたCentOS7のAMI
 
 ## 前提
 ローカルのMacに以下が既にインストールされていること
