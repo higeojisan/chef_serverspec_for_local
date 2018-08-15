@@ -1,20 +1,37 @@
 # 概要
-Vagrant + chef-soloでローカル(Mac)にCentOS7 + Nginx + PHP-FPM + Redisの開発環境を構築するためのリポジトリ
+以下の2つの環境を構築するためのリポジトリ
+1. Vagrant + chef-soloでローカル(Mac)にCentOS7 + Nginx + PHP-FPM + Redisのローカル開発環境
+2. 
 
 ## 前提
 ローカルのMacに以下が既にインストールされていること
 1. Vagrant(2.1.0)
 2. VirtualBox(5.2.16)
 3. Ruby(2.3.6) + bundler(1.16.2)
+4. Packer(1.2.3)
 
 ※(カッコ内は動作確認バージョン)
 
 ## 使い方
+### Vagrant + chef-soloでローカル(Mac)にCentOS7 + Nginx + PHP-FPM + Redisのローカル開発環境の場合
 ```
 $ git clone git@github.com:higeojisan/chef_serverspec_for_local.git
 $ cd chef_serverspec_for_local
 $ vagrant up
 $ bundle install --path vendor/bundle
+$ bundle exec rake spec
+```
+### Packer + chef-soloでプロビジョニングされたCentOS7のAMIの場合
+```
+$ git clone git@github.com:higeojisan/chef_serverspec_for_local.git
+$ cd chef_serverspec_for_local
+$ packer build base-ami.json
+```
+※.envrcに以下の記載があることが前提
+```
+export AWS_ACCESS_KEY_ID="xxxxxxxxxxxxx"
+export AWS_SECRET_ACCESS_KEY="xxxxxxxxxxxxxxxx"
+export AWS_DEFAULT_REGION="ap-northeast-1"
 ```
 
 ### vagrant up時に以下のエラーが発生した場合
