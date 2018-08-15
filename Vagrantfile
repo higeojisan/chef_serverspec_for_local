@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "chef_solo" do |chef|
     chef.install = true
-    chef.run_list = ["initial_settings","nginx", "php-fpm", "redis", "nodejs", "aws-cli"]
+    chef.run_list = ["initial_settings","nginx", "php-fpm", "redis", "nodejs", "aws-cli", "users"]
+    #chef.data_bags_path = "data_bags"
   end
 end

@@ -15,6 +15,7 @@ end
 execute 'setenforce 0' do
   user 'root'
   command 'setenforce 0'
+  not_if 'getenforce | grep "Disabled"'
 end
 
 template '/etc/selinux/config' do
