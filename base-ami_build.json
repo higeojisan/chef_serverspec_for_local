@@ -29,7 +29,7 @@
     {
       "type": "chef-solo",
       "cookbook_paths": ["cookbooks"],
-      "run_list": ["recipe[initial_settings]", "recipe[nginx]", "recipe[nodejs]", "recipe[php-fpm]", "recipe[redis]"]
+      "run_list": ["recipe[initial_settings]", "recipe[nginx]", "recipe[nodejs]", "recipe[php-fpm]", "recipe[redis]", "recipe[aws-cli]", "recipe[swap]"]
     },
     {
       "type": "file",
