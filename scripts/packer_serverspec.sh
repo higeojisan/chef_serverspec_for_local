@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH=/usr/bin:/root/bin:/usr/local/bin:/sbin:/usr/sbin
+export PATH=/usr/bin:/root/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin:/usr/sbin:/bin
 cd /tmp
 sudo yum install -y ruby
 sudo gem install bundler
